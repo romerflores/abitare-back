@@ -30,7 +30,8 @@ const __dirname = path.dirname(__filename);
 //Middlewares
 app.use(
   cors({
-    origin: [`http://localhost:10000`, `http://localhost:5173`],
+    // origin: [`http://localhost:10000`, `http://localhost:5173`],
+    origin:true,
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
