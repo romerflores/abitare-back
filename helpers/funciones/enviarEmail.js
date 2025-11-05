@@ -4,7 +4,7 @@ export const enviarCorreo = async (correoDestino, correoOrigen, asunto, cuerpo) 
   const config = {
     host: "smtp.gmail.com",
     port: 587,
-    secure: true,
+    secure: false,
     auth: {
       user: correoOrigen,
       pass: "fdnf hyvn ukrj bewj",
