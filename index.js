@@ -24,6 +24,8 @@ import { router as consumoRouter } from "./routes/consumo.route.js";
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -40,6 +42,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 //Rutas
 app.use("/api/usuario", usuarioRouter);
@@ -72,6 +75,7 @@ import { router as anunciosComunicaciones } from './routes/comunicacionRoutes/an
 import { router as quejasComunicaciones } from "./routes/comunicacionRoutes/quejas.js";
 import { router as votacionComunicaciones } from "./routes/comunicacionRoutes/votaciones.js";
 import { router as chatComunicaciones } from "./routes/comunicacionRoutes/chat.js";
+import proxy from "express-http-proxy";
 
 
 app.use('/api/anuncios', anunciosComunicaciones);
