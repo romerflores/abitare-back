@@ -92,12 +92,14 @@ app.use((req, res, next) => {
 });
  */
 
+const PORT = process.env.PORT || PORT_MAIN || 3000;
+
 sequelize
-  .sync({ alter: true })
+  .sync({ alter: false }) // en producción evita modificar estructuras
   .then(() => {
-    app.listen(PORT_MAIN, () =>
-      console.log(`🚀 Servidor corriendo en http://localhost:${PORT_MAIN}`)
-    );
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor corriendo en el puerto ${PORT}`);
+    });
   })
   .catch((err) => {
     console.error("❌ Error al sincronizar la base de datos:", err);
