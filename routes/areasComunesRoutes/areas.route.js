@@ -330,9 +330,9 @@ router.delete("/eliminar/:id", validarTokenAdmin, eliminarArea);
 
 /* Opciones para el usuario */
 router.get("/residente/reservas/all", /*validarTokenUsuario,*/ obtenerReservasAll);
-router.get("/residente/reservas/:id_usuario", validarTokenUsuario, obtenerReservas);
-router.post("/residente/reservar", validarTokenUsuario, reservarArea);
-router.put("/residente/editar-reserva", validarTokenUsuario, editarReservaArea);
+router.get("/residente/reservas/:id_usuario" /*, validarTokenUsuario*/, obtenerReservas);
+router.post("/residente/reservar", /*validarTokenUsuario,*/ reservarArea);
+router.put("/residente/editar-reserva", /*validarTokenUsuario,*/ editarReservaArea);
 router.delete(
   "/residente/eliminar-reserva/:id",
   validarTokenUsuario,
