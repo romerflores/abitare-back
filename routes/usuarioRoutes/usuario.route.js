@@ -81,16 +81,17 @@ router.post("/validar-codigo", validarClaveRecuperacion);
 router.put("/actualizar-clave", actualizarClave);
 
 router.delete("/logout", (req, res) => {
-  req.cookies.cookie_personal && res.clearCookie("cookie_personal").status(200).json({
-        message: "Sesion cerrada",
-  })
-  ||
-  req.cookies.cookie_admin && res.clearCookie("cookie_admin").status(200).json({
-        message: "Sesion cerrada",
-      })
-  || req.cookies.cookie_usuario && res.clearCookie("cookie_usuario").status(200).json({
-        message: "Sesion cerrada",
-      })
-});
+  if (req.cookies.cookie_personal) {
+    res.clearCookie("cookie_personal", { sameSite: "None", secure: true });
+  }
+  if (req.cookies.cookie_admin) {
+    res.clearCookie("cookie_admin", { sameSite: "None", secure: true });
+  }
+  if (req.cookies.cookie_usuario) {
+    res.clearCookie("cookie_usuario", { sameSite: "None", secure: true });
+  }
 
+  // Siempre responde, con o sin cookies
+  return res.status(200).json({ message: "Sesión cerrada correctamente" });
+});
 export { router };
